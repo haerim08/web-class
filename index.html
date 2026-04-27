@@ -3,42 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포근한 디저트 카페</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: rgb(225, 232, 235);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: lightslategray;
+            font-family: 'Pretendard', sans-serif;
+            background: #f7f2eb;
+            color: #3b2d2a;
+            line-height: 1.7;
         }
-        
+
+        header {
+            background: linear-gradient(135deg, #8b5e3c, #c89b6d);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
         h1 {
-            color: black;
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
         }
 
-        p {
-            font-style: italic;
+        header p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.95;
         }
 
-        ul, ol {
-            font-size : 12px;
-            font-weight: bolder;
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 70px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #c89b6d;
+            display: inline-block;
+        }
+
+        section p {
+            font-size: 1.05rem;
+        }
+
+        .cards {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            width: 300px;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            transition: all 0.35s ease;
+            transform: translateY(40px);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 22px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .card-content .desc {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #6a5448;
+            margin-bottom: 14px;
+            min-height: 50px;
+        }
+
+        .card-content .price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #8b5e3c;
+            margin-bottom: 16px;
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #8b5e3c, #b87b4b);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 18px rgba(139, 94, 60, 0.25);
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 28px rgba(139, 94, 60, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .card button {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        footer {
+            background: #5b3d2b;
+            color: white;
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 0.95rem;
+        }
+
+        .hot {
+                border: 2px solid red;
+                position: relative;
+        }
+
+        .hot::before {
+            content: "추천";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgb(255, 37, 37);
+            color:#3b2d2a;
+            font-size: 0.7rem;
+            border-radius: 999px;
+            padding: 4px 10px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 320px;
+            }
         }
     </style>
-    <title>소개 페이지</title>
 </head>
 <body>
-    <h1>안녕하세요</h1>
-    <p>저는 홍길동입니다. 웹개발을 배우고 있어요.</p>
-    <a href = "https://naver.com" target = "_blank">새탭으로열기</a>
-    <img src="up.jpg" alt ="사진설명">
-    <ul>
-        <li>아</li>
-        <li>이</li>
-        <li>우</li>
-    </ul>
-    <ol>
-        <li>아</li>
-        <li>이</li>
-        <li>우</li>
-    </ol>
+
+<header>
+    <h1>달콤한 쉼표</h1>
+    <p>기분이 편안해지는 작은 카페</p>
+</header>
+
+<main>
+    <section>
+        <h2>가게 소개</h2>
+        <p>
+            따뜻하고 포근한 분위기 속에서 바쁜 일상에 잠시 쉬어갈 수 있는 디저트 카페입니다.
+            직접 만든 달콤한 디저트와 향긋한 음료로 편안한 시간을 선물합니다.
+        </p>
+    </section>
+
+    <section>
+        <h2>대표 상품</h2>
+        <div class="cards">
+
+            <div class="card hot">
+                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" alt="딸기 케이크">
+                <div class="card-content">
+                    <div>
+                        <h3>수제 딸기 케이크</h3>
+                        <p class="desc">신선한 딸기와 부드러운 생크림이 가득한 대표 디저트</p>
+                        <p class="price">₩7,500</p>
+                    </div>
+                    <button>주문하기</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://recipe1.ezmember.co.kr/cache/recipe/2018/10/02/a33131aa5e77c58ae6091e0f24b13b651.jpg" alt="버터 쿠키">
+                <div class="card-content">
+                    <div>
+                        <h3>버터 쿠키 세트</h3>
+                        <p class="desc">고소한 풍미와 바삭한 식감이 매력적인 수제 쿠키</p>
+                        <p class="price">₩5,800</p>
+                    </div>
+                    <button>주문하기</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085" alt="바닐라 라떼">
+                <div class="card-content">
+                    <div>
+                        <h3>바닐라 라떼</h3>
+                        <p class="desc">달콤한 바닐라 향과 진한 에스프레소의 완벽한 조화</p>
+                        <p class="price">₩4,900</p>
+                    </div>
+                    <button>주문하기</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <h2>방문 안내</h2>
+        <p>운영시간: 10:00 ~ 21:00</p>
+        <p>위치: 따뜻한 거리 12</p>
+        <button>문의하기</button>
+    </section>
+</main>
+
+<footer>
+    <p>제작일: 2026-04-21 | 연락처: 010-1234-5678 | 정해림</p>
+</footer>
+
 </body>
 </html>
